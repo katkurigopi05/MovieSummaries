@@ -1,0 +1,26 @@
+# Datasets (Too large for Git)
+*.tsv
+*.txt
+!requirements.txt
+!README.txt
+
+# Models (Too large)
+models/
+*.joblib
+*.pt
+*.pth
+
+# Outputs/Generated files
+outputs/
+.DS_Store
+__pycache__/
+*.pyc
+
+# IDE/Agent
+.agents/
+.agent/
+.code-review-graph/
+.sixth/
+.idea/
+.vscode/
+data/
