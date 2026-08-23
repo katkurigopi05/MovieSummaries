@@ -220,3 +220,31 @@ Contributions are welcome! Some ideas for improvement:
 - Add word embeddings (Word2Vec, GloVe)
 - Build a web interface with Streamlit or Gradio
 - Experiment with more genres or hierarchical classification
+
+## Usage
+
+```bash
+pip install -r requirements.txt
+```
+
+**Classical models**
+
+```bash
+python main.py                              # train and evaluate
+python predict.py "A retired thief is pulled into one last heist."
+python predict.py --file summary.txt
+```
+
+**Deep learning**
+
+```bash
+python main_deep_learning.py                # train the BERT model
+python predict_dl.py "A retired thief is pulled into one last heist."
+```
+
+`predict.py` takes a plot summary inline or via `--file`, and prints the
+predicted genres. The Spyder-suffixed scripts are the same pipelines arranged
+for cell-by-cell execution in an IDE.
+
+Requires `torch` and `nltk` (in `requirements.txt`); the first run downloads
+NLTK corpora.
