@@ -248,3 +248,24 @@ for cell-by-cell execution in an IDE.
 
 Requires `torch` and `nltk` (in `requirements.txt`); the first run downloads
 NLTK corpora.
+
+## Libraries & Methods
+
+Scanned every `.py` file (18 files, 4,148 lines) — two complete, independently
+runnable pipelines live here, not one.
+
+**Classical pipeline** — `sklearn.feature_extraction.text.TfidfVectorizer`,
+`MultiLabelBinarizer` for the multi-genre target, `OneVsRestClassifier`
+wrapping `MultinomialNB` / `LogisticRegression` / `LinearSVC`, calibrated with
+`CalibratedClassifierCV`, scored with `f1_score`. Text is cleaned with
+`nltk.corpus.stopwords`, `WordNetLemmatizer`, `word_tokenize`.
+
+**Deep-learning pipeline** — `torch.utils.data.DataLoader`/`Dataset` feed an
+LSTM path, and `transformers.DistilBertTokenizer` / `DistilBertModel` feed a
+BERT path — `predict_genres_lstm` and `predict_genres_bert` are both real,
+separate functions in `src/`, so the repo lets you compare a from-scratch
+sequence model against a fine-tuned transformer on the same labels.
+
+**Own package (`src/`)** — `preprocess_text`, `preprocess_dataframe`,
+`load_metadata`, `load_plots`, `merge_data`, `filter_top_genres`,
+`predict_genres`, `load_inference_artifacts`.
